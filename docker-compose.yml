@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  spring-boot-app:
+    build:
+      context: ./apostar-backend-resultados
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - sqlite-db
+
+  sqlite-db:
+    build:
+      context: ./apostar-backend-resultados
+      dockerfile: Dockerfile.sqlite
+    volumes:
+      - sqlite_data:/db
+
+  angular-app:
+    build:
+      context: ./apostar-frontend-resultados
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - spring-boot-app
+      - sqlite-db
+
+volumes:
+  sqlite_data:
