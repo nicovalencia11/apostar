@@ -3,6 +3,7 @@ package com.apostar.apostarbackendresultados.services.implementation;
 import com.apostar.apostarbackendresultados.entities.Configuration;
 import com.apostar.apostarbackendresultados.repositories.ConfigurationRepository;
 import com.apostar.apostarbackendresultados.services.services.ConfigurationService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class ConfigurationServiceImpl implements ConfigurationService {
      * @return
      * @throws Exception
      */
+    @Transactional
     @Override
     public Configuration createOrUpdateConfiguration(Configuration configuration) throws Exception {
         return configurationRepository.save(configuration);
@@ -33,6 +35,7 @@ public class ConfigurationServiceImpl implements ConfigurationService {
      * @return
      * @throws Exception
      */
+    @Transactional
     @Override
     public Configuration getConfiguration(Integer code) throws Exception {
         return configurationRepository.findByCode(code);
@@ -44,6 +47,7 @@ public class ConfigurationServiceImpl implements ConfigurationService {
      * @return
      * @throws Exception
      */
+    @Transactional
     @Override
     public List<Configuration> getAllConfigurations() throws Exception {
         return configurationRepository.findAll();

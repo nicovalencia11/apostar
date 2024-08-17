@@ -1,1 +1,36 @@
-<p>config-form works!</p>
+<div class="flex justify-content-center align-items-center min-h-screen w-ful">
+    <p-card header="Formulario Configuración" class="w-10">
+      <form
+        [formGroup]="formConfig"
+        (ngSubmit)="createConfig()"
+        class="flex flex-column gap-2"
+      >
+        <div class="field flex flex-column gap-1">
+          <label for="time">Hora de ejecución</label>
+          <input type="time" pInputText formControlName="time" />
+        </div>
+        <div class="field flex flex-column gap-1">
+          <label for="emails">Emails</label>
+          <input type="email" pInputText formControlName="emails" />
+        </div>
+        <div class="field flex flex-column gap-1">
+          <label for="endPoint">Url consulta de resultados</label>
+          <input type="url" pInputText formControlName="endPoint" />
+        </div>
+        <div class="field flex flex-column gap-1">
+            <p-fileUpload
+              mode="basic"
+              [chooseLabel]="'Seleccionar imagen de fondo'"
+              chooseIcon="pi pi-upload"
+              [customUpload]="true"
+              accept="image/*"
+              maxFileSize="1000000"
+              (onSelect)="onFileSelected($event)"
+            ></p-fileUpload>
+          </div>
+        <div class="flex gap-2">
+          <p-button label="Guardar" [loading]="isSaveInProgress" type="submit" />
+        </div>
+      </form>
+    </p-card>
+  </div>

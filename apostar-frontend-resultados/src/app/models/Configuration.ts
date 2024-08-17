@@ -1,6 +1,6 @@
 export interface Configuration {
     code: number;
-    background: File | null;
+    background: string | ArrayBuffer | null ;
     time: string;
     emails: string[];
     endPoint: string; 

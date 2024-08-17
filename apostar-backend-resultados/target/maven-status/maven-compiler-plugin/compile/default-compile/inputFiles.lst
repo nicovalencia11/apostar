@@ -1,1 +1,11 @@
 C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\ApostarBackendResultadosApplication.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\components\AppConfig.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\components\StartApp.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\controllers\ConfigurationController.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\dto\Loteria.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\entities\Configuration.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\repositories\ConfigurationRepository.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\services\implementation\ConfigurationServiceImpl.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\services\implementation\EmailServiceImpl.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\services\services\ConfigurationService.java
+C:\Users\nicol\Documents\pruebaapostar\apostar\apostar-backend-resultados\src\main\java\com\apostar\apostarbackendresultados\services\services\EmailService.java

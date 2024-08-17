@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalTime;
-import java.util.List;
 
 
 @Entity
@@ -22,16 +21,15 @@ public class Configuration implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer code;
 
+    @Lob
     @Column(nullable = true)
-    private byte[] background;
+    private String background;
 
     @Column(nullable = false)
     private LocalTime time;
 
-    @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "emails", joinColumns = @JoinColumn(name = "code"))
     @Column(nullable = false)
-    private List<String> emails;
+    private String emails;
 
     @Column(nullable = false)
     private String endPoint;

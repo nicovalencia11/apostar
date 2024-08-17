@@ -17,10 +17,10 @@ export class ConfigService {
   }
 
   getConfigurationByCode(code:number): Observable<Configuration> {
-    return this.http.get<Configuration>('${this.apiUrl}/${code}');
+    return this.http.get<Configuration>(`${this.apiUrl}${code}`);
   }
 
-  createConfiguration(configuration:Configuration) {
+  createConfiguration(configuration: Configuration) {
     return this.http.post<Configuration>(this.apiUrl, configuration);
   }
 

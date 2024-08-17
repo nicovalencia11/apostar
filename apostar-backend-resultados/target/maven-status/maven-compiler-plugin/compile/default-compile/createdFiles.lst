@@ -1,1 +1,12 @@
+com\apostar\apostarbackendresultados\services\services\EmailService.class
+com\apostar\apostarbackendresultados\repositories\ConfigurationRepository.class
+com\apostar\apostarbackendresultados\components\StartApp.class
+com\apostar\apostarbackendresultados\services\services\ConfigurationService.class
+com\apostar\apostarbackendresultados\entities\Configuration.class
+com\apostar\apostarbackendresultados\controllers\ConfigurationController.class
+com\apostar\apostarbackendresultados\dto\Loteria.class
+com\apostar\apostarbackendresultados\components\AppConfig.class
+com\apostar\apostarbackendresultados\services\implementation\ConfigurationServiceImpl.class
 com\apostar\apostarbackendresultados\ApostarBackendResultadosApplication.class
+com\apostar\apostarbackendresultados\components\StartApp$1.class
+com\apostar\apostarbackendresultados\services\implementation\EmailServiceImpl.class

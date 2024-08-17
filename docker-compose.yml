@@ -26,5 +26,12 @@ services:
       - spring-boot-app
       - sqlite-db
 
+  flask-app:
+    build:
+      context: ./apostar-backend-python
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+
 volumes:
   sqlite_data:
