@@ -22,7 +22,7 @@ public class Configuration implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer code;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private byte[] background;
 
     @Column(nullable = false)

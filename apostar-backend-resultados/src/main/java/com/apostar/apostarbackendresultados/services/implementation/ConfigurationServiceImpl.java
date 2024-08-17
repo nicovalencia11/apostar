@@ -6,12 +6,13 @@ import com.apostar.apostarbackendresultados.services.services.ConfigurationServi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ConfigurationServiceImpl implements ConfigurationService {
 
     @Autowired
     private ConfigurationRepository configurationRepository;
-
 
     /**
      * Metodo que permite crear una configuracion para el sistema
@@ -25,8 +26,27 @@ public class ConfigurationServiceImpl implements ConfigurationService {
         return configurationRepository.save(configuration);
     }
 
+    /**
+     * Metodo que permite obtener una configuracion por codigo
+     *
+     * @param code
+     * @return
+     * @throws Exception
+     */
     @Override
     public Configuration getConfiguration(Integer code) throws Exception {
         return configurationRepository.findByCode(code);
     }
+
+    /**
+     * Metodo que permite obtener todas las configuraciones
+     *
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<Configuration> getAllConfigurations() throws Exception {
+        return configurationRepository.findAll();
+    }
+
 }

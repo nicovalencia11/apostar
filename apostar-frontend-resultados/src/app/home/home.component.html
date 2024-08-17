@@ -1,0 +1,31 @@
+<div class="flex flex-column gap-2">
+    <a routerLink="config-form/new" class="p-button font-bold w-max">
+      Crear Configuracion
+    </a>
+    <div class="flex gap-4 flex-wrap">
+        <div ngIf="configs">
+            <p-table [value]="configs" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Code</th>
+                        <th>Hora ejecucion</th>
+                        <th>Correos</th>
+                        <th>EndPoint</th>
+                        <th>Acciones</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-config>
+                    <tr>
+                        <td>{{ config.code }}</td>
+                        <td>{{ config.time }}</td>
+                        <td>{{ config.emails }}</td>
+                        <td>{{ config.endPoint }}</td>
+                        <td><a routerLink="config-form/{{ config.code }}" class="p-button font-bold">
+                            Editar
+                          </a></td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+  </div>
