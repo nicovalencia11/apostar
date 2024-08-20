@@ -44,4 +44,4 @@ Usando una herramienta como AIRFLOW la cual nos permitira tener ya una interfaz 
 y con codigo sencillo para el consumo y generacion de la imagen
 
 ## 3.
-Implementando
+Implementando un servicio de cliente feign que es una libreria dedicada para consumir apis externas

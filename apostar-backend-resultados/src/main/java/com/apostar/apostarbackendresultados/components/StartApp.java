@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.time.LocalTime;
 import java.util.Base64;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.ScheduledFuture;
 
 import static org.apache.commons.codec.binary.Base64.decodeBase64;
@@ -50,16 +51,21 @@ public class StartApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        TimeZone.setDefault(TimeZone.getTimeZone("America/Bogota"));
         try {
             Configuration configuration = getConfiguration();
-            taskScheduler = new ThreadPoolTaskScheduler();
-            if (configuration != null) {
-                ((ThreadPoolTaskScheduler) taskScheduler).initialize();
-                scheduledTask = taskScheduler.schedule(this::executeTask, new CronTrigger(generateCronExpression(configuration.getTime())));
-            } else {
-                logger.error("ERROR: No se puede iniciar la tarea programada, no existe la configuración");
-                logger.info("INFO: Por favor, cree la configuración necesaria para la tarea programada");
+
+            if (configuration == null) {
+                configuration = new Configuration();
+                configuration.setTime(LocalTime.of(0, 0));
+                configuration.setBackground("");
+                configuration.setEmails("");
+                configuration.setEndPoint("");
+                configurationService.createOrUpdateConfiguration(configuration);
             }
+            taskScheduler = new ThreadPoolTaskScheduler();
+            ((ThreadPoolTaskScheduler) taskScheduler).initialize();
+            scheduledTask = taskScheduler.schedule(this::executeTask, new CronTrigger(generateCronExpression(configuration.getTime())));
         } catch (Exception e) {
             logger.error("ERROR: Ocurrió un error al iniciar la tarea programada", e);
         }
@@ -77,15 +83,15 @@ public class StartApp implements CommandLineRunner {
         Configuration configuration;
         try {
             configuration = configurationService.getConfiguration(1);
-            String url = configuration.getEndPoint();
+            String url = "http://localhost:5000/loterias";
             byte[] imageBytes = decodeBase64(configuration.getBackground());
             BufferedImage image = convertBytesToImage(imageBytes);
             List<Loteria> loterias = obtenerLoterias(url);
             String b64Image = generateImage(image, loterias);
             byte[] imageBytesSend = Base64.getDecoder().decode(b64Image);
-            emailService.enviarEmail(configuration.getEmails(), "prueba", "Envio de imagen con los resultados", imageBytesSend);
+            emailService.enviarEmail(configuration.getEmails(), "Resultados", "Envio de imagen con los resultados", imageBytesSend);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("ERROR: no se pudo ejecutar la tarea correctamente", e);
         }
     }
 
@@ -162,7 +168,6 @@ public class StartApp implements CommandLineRunner {
             }
 
         }
-
         g2d.dispose();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(image, "jpeg", baos);

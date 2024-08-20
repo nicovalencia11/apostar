@@ -8,6 +8,8 @@ services:
       - "8081:8081"
     depends_on:
       - sqlite-db
+    networks:
+      - mi_red
 
   sqlite-db:
     build:
@@ -15,6 +17,8 @@ services:
       dockerfile: Dockerfile.sqlite
     volumes:
       - sqlite_data:/db
+    networks:
+      - mi_red
 
   angular-app:
     build:
@@ -25,6 +29,8 @@ services:
     depends_on:
       - spring-boot-app
       - sqlite-db
+    networks:
+      - mi_red
 
   flask-app:
     build:
@@ -32,6 +38,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
+    networks:
+      - mi_red
 
 volumes:
   sqlite_data:
+
+networks:
+  mi_red:
+    driver: bridge
